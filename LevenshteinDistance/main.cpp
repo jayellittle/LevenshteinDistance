@@ -14,18 +14,18 @@ using namespace std;
 int main(int argc, const char * argv[]) {
     string S, T;
     
-    S = "abcd";
-    T = "axyd";
+    S = "moon";
+    T = "mind";
     
-    vector<vector<int>> y(S.size() + 1, vector<int>(T.size() + 1));
+    vector<vector<int>> y(S.size()+1, vector<int>(T.size()+1));
     
     int i, j;
-    for (i = 0; i <= S.size(); i++) y[i][0] = i;
-    for (j = 0; j <= T.size(); j++) y[0][j] = j;
+    for (i=0; i<=S.size(); i++) y[i][0] = i;
+    for (j=0; j<=T.size(); j++) y[0][j] = j;
     
-    for (i = 1; i <= S.size(); i++) {
-        for (j = 1; j <= T.size(); j++) {
-            if (S[i - 1] == T[j - 1]) {
+    for (i=1; i<=S.size(); i++) {
+        for (j=1; j<=T.size(); j++) {
+            if (S[i] == T[j]) {
                 y[i][j] = min({y[i-1][j-1], y[i-1][j]+1, y[i][j-1]+1});
             } else {
                 y[i][j] = min({y[i-1][j-1]+1, y[i-1][j]+1, y[i][j-1]+1});
